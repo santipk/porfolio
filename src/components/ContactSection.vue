@@ -96,9 +96,10 @@ import { useI18n } from '../composables/useI18n.js';
 
 const { t, currentLanguage } = useI18n();
 
-const cvUrl = computed(() =>
-  currentLanguage.value === 'es' ? './cv-es.pdf' : './cv-en.pdf'
-);
+const cvUrl = computed(() => {
+  console.log('[PORTFOLIO] currentLanguage:', currentLanguage.value);
+  return currentLanguage.value === 'es' ? './cv-es.pdf' : './cv-en.pdf';
+});
 </script>
 
 <style scoped>
