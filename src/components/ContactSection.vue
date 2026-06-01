@@ -76,14 +76,14 @@
             </svg>
             {{ t.contact.contactMe }}
           </a>
-          <button class="btn btn-secondary btn-large">
+          <a :href="cvUrl" download="Santiago_Abregu_CV" class="btn btn-secondary btn-large">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
             {{ t.contact.cvDownload }}
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -91,9 +91,14 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { useI18n } from '../composables/useI18n.js';
 
-const { t } = useI18n();
+const { t, currentLanguage } = useI18n();
+
+const cvUrl = computed(() =>
+  currentLanguage.value === 'es' ? './cv-es.pdf' : './cv-en.pdf'
+);
 </script>
 
 <style scoped>
